@@ -5,8 +5,6 @@
 ![Google Drive](https://img.shields.io/badge/Google%20Drive-4285F4?style=for-the-badge&logo=googledrive&logoColor=white)
 ![Yandex Mail](https://img.shields.io/badge/Yandex%20Mail-FF0000?style=for-the-badge)
 
-# 📧 AI Email Processor for n8n
-
 [![n8n](https://img.shields.io/badge/n8n-ready-green.svg)](https://n8n.io/)
 [![Cost](https://img.shields.io/badge/cost-~2.5₽_per_run-blue.svg)](https://github.com/yourusername/your-repo)
 [![AI Powered](https://img.shields.io/badge/AI-GPT--4.1-orange.svg)](https://openai.com/)
