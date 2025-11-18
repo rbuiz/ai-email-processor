@@ -1,0 +1,586 @@
+{
+  "name": "1 чтение почты",
+  "nodes": [
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1-nano",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1-nano"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        -608,
+        -16
+      ],
+      "id": "7184c1d1-d9e0-4ced-9972-97ddc007336a",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "8oWkmmCK5PidTbjS",
+          "name": "прокси апи"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.3,
+      "position": [
+        -1184,
+        64
+      ],
+      "id": "b61c95f4-1b4e-4700-adf7-c28899934d23",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "8oWkmmCK5PidTbjS",
+          "name": "прокси апи"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $workflow.id }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        -1024,
+        64
+      ],
+      "id": "d1316a9b-2e62-447e-9416-5e188508d32e",
+      "name": "Simple Memory",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1KfZ3cO61tte9rH094GhTFkb8mBRANq0_GUR86JLsDQk",
+          "mode": "list",
+          "cachedResultName": "идеи из писем",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1KfZ3cO61tte9rH094GhTFkb8mBRANq0_GUR86JLsDQk/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Лист1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1KfZ3cO61tte9rH094GhTFkb8mBRANq0_GUR86JLsDQk/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "тема письма": "={{ $('Email Trigger (IMAP) получение писем и их чтение').item.json.subject }}",
+            "время письма": "={{ $('Email Trigger (IMAP) получение писем и их чтение').item.json.date }}",
+            "от кого": "={{ $('Email Trigger (IMAP) получение писем и их чтение').item.json.from }}",
+            "тематика": "={{ $json.output.topic }}",
+            "общий смысл": "={{ $json.output.summary }}",
+            "идея 1": "={{ $json.output.idea_1 }}",
+            "идея 2": "={{ $json.output.idea_2 }}",
+            "идея 3": "={{ $json.output.idea_3 }}",
+            "полезность": "={{ $json.output.usefulness }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "тема письма",
+              "displayName": "тема письма",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "время письма",
+              "displayName": "время письма",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "от кого",
+              "displayName": "от кого",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "тематика",
+              "displayName": "тематика",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "общий смысл",
+              "displayName": "общий смысл",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "идея 1",
+              "displayName": "идея 1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "идея 2",
+              "displayName": "идея 2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "идея 3",
+              "displayName": "идея 3",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "полезность",
+              "displayName": "полезность",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -96,
+        -336
+      ],
+      "id": "b0a08950-e266-4f83-ae2a-31ed51400366",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "ymq0yfgW6iOkjyms",
+          "name": "Google Sheets account"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "folderId": "11wwafjbrgdJEmUhLz5xTNKw8CwX6Ori0",
+        "title": "={{ $('Email Trigger (IMAP) получение писем и их чтение').item.json.subject }} {{ $('Email Trigger (IMAP) получение писем и их чтение').item.json.date }}"
+      },
+      "type": "n8n-nodes-base.googleDocs",
+      "typeVersion": 2,
+      "position": [
+        -96,
+        -112
+      ],
+      "id": "c20704b4-f960-41a5-8441-ef6366b5c430",
+      "name": "Create a document",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "v4Z6uNTqREySjW9G",
+          "name": "Google Docs account"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentURL": "={{ $json.id }}",
+        "actionsUi": {
+          "actionFields": [
+            {
+              "action": "insert",
+              "text": "=тематика текста:  {{ $('Information Extractor извлечение переменных').item.json.output.topic }}\n\n"
+            },
+            {
+              "action": "insert",
+              "text": "=коротко - о чём:  {{ $('Information Extractor извлечение переменных').item.json.output.summary }}\n\n"
+            },
+            {
+              "action": "insert",
+              "text": "=кому и чем может быть интересно:\n{{ $('Information Extractor извлечение переменных').item.json.output.usefulness }}\n\n"
+            },
+            {
+              "action": "insert",
+              "text": "основные мысли:"
+            },
+            {
+              "action": "insert",
+              "text": "=\n1. {{ $('Information Extractor извлечение переменных').item.json.output.thought_1 }}\n"
+            },
+            {
+              "action": "insert",
+              "text": "=2. {{ $('Information Extractor извлечение переменных').item.json.output.thought_2 }}\n"
+            },
+            {
+              "action": "insert",
+              "text": "=3. {{ $('Information Extractor извлечение переменных').item.json.output.thought_3 }}\n"
+            },
+            {
+              "action": "insert",
+              "text": "=4. {{ $('Information Extractor извлечение переменных').item.json.output.thought_4 }}\n"
+            },
+            {
+              "action": "insert",
+              "text": "=5. {{ $('Information Extractor извлечение переменных').item.json.output.thought_5 }}\n\n"
+            },
+            {
+              "action": "insert",
+              "text": "идеи для практического применения:"
+            },
+            {
+              "action": "insert",
+              "text": "=\n1. {{ $('Information Extractor извлечение переменных').item.json.output.idea_1 }}\n"
+            },
+            {
+              "action": "insert",
+              "text": "=2. {{ $('Information Extractor извлечение переменных').item.json.output.idea_2 }}\n"
+            },
+            {
+              "action": "insert",
+              "text": "=3. {{ $('Information Extractor извлечение переменных').item.json.output.idea_3 }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.googleDocs",
+      "typeVersion": 2,
+      "position": [
+        208,
+        -48
+      ],
+      "id": "ddd74736-fe36-472c-9192-abc9de591d58",
+      "name": "Update a document",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "v4Z6uNTqREySjW9G",
+          "name": "Google Docs account"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailReadImap",
+      "typeVersion": 2.1,
+      "position": [
+        -1568,
+        -160
+      ],
+      "id": "ef9b1fc4-00f4-47c7-aa7d-49bbdac18909",
+      "name": "Email Trigger (IMAP) получение писем и их чтение",
+      "alwaysOutputData": false,
+      "credentials": {
+        "imap": {
+          "id": "wt2hxmtsa9XhRE0j",
+          "name": "1 чтение яндекс почты"
+        }
+      },
+      "onError": "continueErrorOutput",
+      "notes": "ошибка"
+    },
+    {
+      "parameters": {
+        "jsCode": "const inputData = $input.first().json.textHtml;\n\n\n// ДИАГНОСТИКА: что приходит на самом деле\nconsole.log('=== RAW INPUT ===');\nconsole.log('Type:', typeof inputData);\nconsole.log('Keys:', inputData ? Object.keys(inputData) : 'No input');\nconsole.log('Input data:', JSON.stringify(inputData, null, 2));\n\n// Получаем HTML из разных возможных источников\nlet rawHtml = '';\n\nif (typeof inputData === 'string') {\n    rawHtml = inputData;\n} else if (inputData && inputData.json) {\n    // Пробуем все возможные поля\n    rawHtml = inputData.json.html || \n              inputData.json.content || \n              inputData.json.text || \n              inputData.json.body ||\n              inputData.json.data ||\n              JSON.stringify(inputData.json);\n}\n\nconsole.log('Raw HTML length:', rawHtml.length);\nconsole.log('First 500 chars:', rawHtml.substring(0, 500));\n\n// ПРОСТОЙ И ЭФФЕКТИВНЫЙ МЕТОД\nfunction fixEncoding(text) {\n    if (!text) return '';\n    \n    // Метод 1: Пробуем разные кодировки\n    let fixed = text;\n    \n    try {\n        // Latin1 -> UTF-8 (самый частый случай)\n        const latin1Fixed = Buffer.from(text, 'latin1').toString('utf8');\n        if (latin1Fixed.includes('Битва') || latin1Fixed.match(/[А-Яа-я]/)) {\n            fixed = latin1Fixed;\n            console.log('Used Latin1 fix');\n        }\n    } catch(e) {}\n    \n    try {\n        // Binary -> UTF-8  \n        const binaryFixed = Buffer.from(text, 'binary').toString('utf8');\n        if (binaryFixed.includes('Битва') || binaryFixed.match(/[А-Яа-я]/)) {\n            fixed = binaryFixed;\n            console.log('Used Binary fix');\n        }\n    } catch(e) {}\n    \n    // Метод 2: Ручные замены для частых случаев\n    const replacements = [\n        ['Ð', 'Д'], ['Ñ', 'С'], ['Â', ''], ['Ã', ''],\n        ['Ð°', 'а'], ['Ð±', 'б'], ['Ð²', 'в'], ['Ð³', 'г'],\n        ['Ð´', 'д'], ['Ðµ', 'е'], ['Ñ', 'с'], ['Ð·', 'з'],\n        ['Ð¸', 'и'], ['Ð¹', 'й'], ['Ðº', 'к'], ['Ð»', 'л'],\n        ['Ð¼', 'м'], ['Ð½', 'н'], ['Ð¾', 'о'], ['Ð¿', 'п'],\n        ['Ñ€', 'р'], ['Ñ', 'с'], ['Ñ‚', 'т'], ['Ñƒ', 'у'],\n        ['Ñ„', 'ф'], ['Ñ…', 'х'], ['Ñ†', 'ц'], ['Ñ‡', 'ч'],\n        ['Ñ', 'ш'], ['Ñ‰', 'щ'], ['Ñ‹', 'ы'], ['ÑŒ', 'ь'],\n        ['Ñ', 'э'], ['ÑŽ', 'ю'], ['Ñ', 'я']\n    ];\n    \n    replacements.forEach(([from, to]) => {\n        fixed = fixed.split(from).join(to);\n    });\n    \n    return fixed;\n}\n\n// ОСНОВНАЯ ОБРАБОТКА\nlet resultText = '';\n\nif (rawHtml) {\n    // 1. Исправляем кодировку ДО очистки HTML\n    const fixedEncoding = fixEncoding(rawHtml);\n    console.log('After encoding fix:', fixedEncoding.substring(0, 200));\n    \n    // 2. Очищаем HTML\n    resultText = fixedEncoding\n        .replace(/<script\\b[^>]*>[\\s\\S]*?<\\/script>/gi, '')\n        .replace(/<style\\b[^>]*>[\\s\\S]*?<\\/style>/gi, '')\n        .replace(/<[^>]*>/g, ' ')\n        .replace(/\\s+/g, ' ')\n        .trim()\n\n    resultText = resultText\n      .replace(/[\\n\\r\\t]/g, ' ')    // Убираем все переносы и табы\n      .replace(/\\s{2,}/g, ' ')      // Заменяем 2+ пробелов на один\n      .replace(/[\\s\\u2000-\\u200F\\u2028-\\u202F\\u205F-\\u206F\\u3000\\u3164\\uFEFF]+/g, ' ')\n      .trim();                      // Убираем пробелы по краям\n\n  resultText = resultText\n      .replace(/[^\\P{C}\\n]/gu, ' ')   // Убирает ВСЕ управляющие символы кроме переносов\n      .split(/\\r?\\n/)                 // Разбивает по строкам\n      .map(line => line.trim())       // Обрезает каждую строку\n      .filter(line => line.length > 0 && !/^[\\s\\u200B]*$/.test(line)) // Убирает пустые\n      .join(' ')                      // Собирает в одну строку\n      .replace(/\\s+/g, ' ')           // Убирает лишние пробелы\n      .trim();\n  \n    console.log('After HTML cleanup:', resultText.substring(0, 200));\n} else {\n    resultText = 'No HTML data found';\n}\n\n// ВОЗВРАЩАЕМ РЕЗУЛЬТАТ\nreturn [{\n    json: {\n        cleanText: resultText,\n        originalLength: rawHtml.length,\n        cleanLength: resultText.length,\n        containsRussian: /[А-Яа-я]/.test(resultText),\n        diagnostic: 'Check console for details'\n    }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1360,
+        -288
+      ],
+      "id": "f145d69b-cf71-4cf1-b20d-c9efed1c240c",
+      "name": "Code in JavaScript очистка текста от кода",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.cleanText }}",
+        "options": {
+          "systemMessage": "You are a professional librarian-analyst. Your task is to analyze the provided text and strictly follow the instructions below to form your response.\n\n### Instruction:\nAnalyze the text I provide and form your response in JSON format using the following structure:\n\n{\n\"topic\": \"The main topic of the text in 1-2 words.\",\n\"summary\": \"A concise description of the text's main content. 2-3 sentences.\",\n\"key_points\": {\n  \"thought_1\": \"The first key point, described in one sentence.\",\n  \"thought_2\": \"The second key point, described in one sentence.\",\n  \"thought_3\": \"The third key point, described in one sentence.\",\n  \"thought_4\": \"The fourth key point, described in one sentence.\",\n  \"thought_5\": \"The fifth key point, described in one sentence.\"\n},\n\"usefulness\": \"A brief conclusion about the text's usefulness: who it might benefit and why. 1-2 sentences.\",\n\"practical_ideas\": {\n  \"idea_1\": \"The first idea for practical application in daily life, in one sentence.\",\n  \"idea_2\": \"The second idea for practical application in daily life, in one sentence.\",\n  \"idea_3\": \"The third idea for practical application in daily life, in one sentence.\"\n}\n}\n\n### Critical Rules:\n1.  The `topic` field MUST contain only 1-2 words describing the main theme.\n2.  The `key_points` object MUST contain exactly 5 keys (`thought_1` through `thought_5`).\n3.  The `practical_ideas` object MUST contain exactly 3 keys (`idea_1` through `idea_3`).\n4.  All values MUST be strings in English.\n5.  Do not add any text before or after the JSON object. Your entire response must be a valid JSON only.\n\n\n\n\nYou are a professional librarian-analyst. Your task is to analyze the provided text and strictly follow the instructions below to form your response.\n\n### Instruction:\nAnalyze the text I provide and form your response in JSON format using the following structure:\n\n{\n\"topic\": \"The main topic of the text in 1-2 words.\",\n\"summary\": \"A concise description of the text's main content. 2-3 sentences.\",\n\"key_points\": {\n\"thought_1\": \"The first key point, described in one sentence.\",\n\"thought_2\": \"The second key point, described in one sentence.\",\n\"thought_3\": \"The third key point, described in one sentence.\",\n\"thought_4\": \"The fourth key point, described in one sentence.\",\n\"thought_5\": \"The fifth key point, described in one sentence.\"\n},\n\"usefulness\": \"A brief conclusion about the text's usefulness: who it might benefit and why. 1-2 sentences.\",\n\"practical_ideas\": {\n\"idea_1\": \"The first idea for practical application in daily life, in one sentence.\",\n\"idea_2\": \"The second idea for practical application in daily life, in one sentence.\",\n\"idea_3\": \"The third idea for practical application in daily life, in one sentence.\"\n}\n}\n\n### Critical Rules:\n1. If the provided text is not in English, you MUST first translate it into English and then perform the analysis on the English translation.\n\n2. The topic field MUST contain only 1-2 words describing the main theme.\n\n3. The key_points object MUST contain exactly 5 keys (thought_1 through thought_5).\n\n4. The practical_ideas object MUST contain exactly 3 keys (idea_1 through idea_3).\n\n4. All values in the JSON output MUST be strings in English.\n\n5. Do not add any text before or after the JSON object. Your entire response must be a valid JSON only."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        -1168,
+        -160
+      ],
+      "id": "b06be02e-276c-4dee-a000-859a7b9c3e09",
+      "name": "AI Agent обработка текста письма",
+      "alwaysOutputData": false,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "text": "={{ $json.text }}",
+        "attributes": {
+          "attributes": [
+            {
+              "name": "topic",
+              "description": "The main topic of the text in 1-2 words."
+            },
+            {
+              "name": "summary",
+              "description": "A concise description of the text's main content. 2-3 sentences."
+            },
+            {
+              "name": "usefulness",
+              "description": "A brief conclusion about the text's usefulness: who it might benefit and why. 1-2 sentences."
+            },
+            {
+              "name": "thought_1",
+              "description": "The first key point, described in one sentence."
+            },
+            {
+              "name": "thought_2",
+              "description": "The second key point, described in one sentence."
+            },
+            {
+              "name": "thought_3",
+              "description": "The third key point, described in one sentence."
+            },
+            {
+              "name": "thought_4",
+              "description": "The fourth key point, described in one sentence."
+            },
+            {
+              "name": "thought_5",
+              "description": "The fifth key point, described in one sentence."
+            },
+            {
+              "name": "idea_1",
+              "description": "The first idea for practical application in daily life, in one sentence."
+            },
+            {
+              "name": "idea_2",
+              "description": "The second idea for practical application in daily life, in one sentence."
+            },
+            {
+              "name": "idea_3",
+              "description": "The third idea for practical application in daily life, in one sentence."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.informationExtractor",
+      "typeVersion": 1.2,
+      "position": [
+        -512,
+        -256
+      ],
+      "id": "31246a8e-e879-4943-8af5-fce40fc71a87",
+      "name": "Information Extractor извлечение переменных",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.output }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "переведи на естественный русский язык с сохранением названий переменных и их содержания"
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        -864,
+        -240
+      ],
+      "id": "900b5f28-85be-4a57-89bd-5107070d0fc8",
+      "name": "Basic LLM Chain перевод на русский",
+      "onError": "continueErrorOutput"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Information Extractor извлечение переменных",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Basic LLM Chain перевод на русский",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent обработка текста письма",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent обработка текста письма",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a document": {
+      "main": [
+        [
+          {
+            "node": "Update a document",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        [],
+        []
+      ]
+    },
+    "Update a document": {
+      "main": [
+        [],
+        []
+      ]
+    },
+    "Email Trigger (IMAP) получение писем и их чтение": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript очистка текста от кода",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Code in JavaScript очистка текста от кода": {
+      "main": [
+        [
+          {
+            "node": "AI Agent обработка текста письма",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "AI Agent обработка текста письма": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain перевод на русский",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Information Extractor извлечение переменных": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Create a document",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Basic LLM Chain перевод на русский": {
+      "main": [
+        [
+          {
+            "node": "Information Extractor извлечение переменных",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "61ae3af9-e395-4439-a32d-4a39c424239d",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "93a5d9c72b020e99121d1585ba1f855bd9756aa87b1a529beeebeff273cb8a60"
+  },
+  "id": "LKoELRgv0Oiov1LY",
+  "tags": []
+}
