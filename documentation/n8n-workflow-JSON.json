@@ -23,7 +23,7 @@
       "credentials": {
         "openAiApi": {
           "id": "8oWkmmCK5PidTbjS",
-          "name": "прокси апи"
+          "name": "указать своё"
         }
       }
     },
@@ -48,7 +48,7 @@
       "credentials": {
         "openAiApi": {
           "id": "8oWkmmCK5PidTbjS",
-          "name": "прокси апи"
+          "name": "указать своё"
         }
       }
     },
@@ -72,17 +72,17 @@
         "operation": "append",
         "documentId": {
           "__rl": true,
-          "value": "1KfZ3cO61tte9rH094GhTFkb8mBRANq0_GUR86JLsDQk",
+          "value": "указать своё",
           "mode": "list",
           "cachedResultName": "идеи из писем",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1KfZ3cO61tte9rH094GhTFkb8mBRANq0_GUR86JLsDQk/edit?usp=drivesdk"
+          "cachedResultUrl": "указать своё"
         },
         "sheetName": {
           "__rl": true,
           "value": "gid=0",
           "mode": "list",
           "cachedResultName": "Лист1",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1KfZ3cO61tte9rH094GhTFkb8mBRANq0_GUR86JLsDQk/edit#gid=0"
+          "cachedResultUrl": "указать своё"
         },
         "columns": {
           "mappingMode": "defineBelow",
@@ -196,7 +196,7 @@
       "name": "Append row in sheet",
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "ymq0yfgW6iOkjyms",
+          "id": "указать своё",
           "name": "Google Sheets account"
         }
       },
@@ -204,7 +204,7 @@
     },
     {
       "parameters": {
-        "folderId": "11wwafjbrgdJEmUhLz5xTNKw8CwX6Ori0",
+        "folderId": "указать своё",
         "title": "={{ $('Email Trigger (IMAP) получение писем и их чтение').item.json.subject }} {{ $('Email Trigger (IMAP) получение писем и их чтение').item.json.date }}"
       },
       "type": "n8n-nodes-base.googleDocs",
@@ -217,7 +217,7 @@
       "name": "Create a document",
       "credentials": {
         "googleDocsOAuth2Api": {
-          "id": "v4Z6uNTqREySjW9G",
+          "id": "указать своё",
           "name": "Google Docs account"
         }
       },
@@ -294,7 +294,7 @@
       "name": "Update a document",
       "credentials": {
         "googleDocsOAuth2Api": {
-          "id": "v4Z6uNTqREySjW9G",
+          "id": "указать своё",
           "name": "Google Docs account"
         }
       },
@@ -579,8 +579,8 @@
   "versionId": "61ae3af9-e395-4439-a32d-4a39c424239d",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "93a5d9c72b020e99121d1585ba1f855bd9756aa87b1a529beeebeff273cb8a60"
+    "instanceId": "указать своё"
   },
-  "id": "LKoELRgv0Oiov1LY",
+  "id": "указать своё",
   "tags": []
 }
