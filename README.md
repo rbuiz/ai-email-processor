@@ -223,9 +223,19 @@
 
 💡 *Есть идеи или предложения? Мы всегда рады обратной связи!*
 
+## 🎯 Поддержать проект
 
+<div align="center">
 
+**Выберите удобный способ помочь развитию AI Email Processor:**
 
+[![Star](https://img.shields.io/badge/-⭐_Поставить_звезду-blue?style=for-the-badge)](https://github.com/rbuiz/ai-email-processor)
+[![Watch](https://img.shields.io/badge/-👀_Подписаться-green?style=for-the-badge)](https://github.com/rbuiz/ai-email-processor)
+[![Issues](https://img.shields.io/badge/-🐛_Сообщить_об_ошибке-red?style=for-the-badge)](https://github.com/rbuiz/ai-email-processor/issues)
+
+*Каждое действие помогает проекту расти!* 🚀
+
+</div>
 
 
 > 🇷🇺 Русскоязычный проект | Portfolio project
