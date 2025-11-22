@@ -85,7 +85,7 @@
 ## 📊 Как это работает
 
 - [**посмотреть блок-схему процесса**](./documentation/flowchart-processing.md)
-- [**посмотреть workflow**](./documentation/workflow-drawing.jpg)
+- [**посмотреть workflow**](./workflows/workflow-drawing.jpg)
 - [**n8n workflow JSON**](./workflows/n8n-workflow-JSON.json)
 
 ### Этапы обработки:
