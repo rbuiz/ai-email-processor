@@ -86,7 +86,7 @@
 
 - [**посмотреть блок-схему процесса**](./documentation/flowchart-processing.md)
 - [**посмотреть workflow**](./documentation/workflow-drawing.jpg)
-- [**n8n workflow JSON**](./documentation/n8n-workflow-JSON.json)
+- [**n8n workflow JSON**](./workflows/n8n-workflow-JSON.json)
 
 ### Этапы обработки:
 
